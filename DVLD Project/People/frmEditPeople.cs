@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,18 @@ using System.Windows.Forms;
 using DVLD_Project.Global_Classes;
 using DVLD_Project.Properties;
 using DVLDBuisnessLayer;
+using TheArtOfDevHtmlRenderer.Adapters;
 
 namespace DVLD_Project
 {
     public partial class frmEditPeople : Form
     {
         private ErrorProvider errorProvider;
+        // Declare a delegate
+        public delegate void DataBackEventHandler(object sender, int PersonID);
 
+        // Declare an event using the delegate
+        public event DataBackEventHandler DataBack;
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
@@ -30,18 +36,17 @@ namespace DVLD_Project
 
             _PersonID = PersonID;
 
-            if (_PersonID == -1)
-            {
-                Mode = enMode.AddNew;
-            }
-            else
-            {
-                Mode = enMode.Update;
-            }
-
+            Mode = enMode.Update;
             errorProvider = new ErrorProvider();
         }
 
+        public frmEditPeople()
+        {
+            InitializeComponent();
+
+            Mode = enMode.AddNew;
+            errorProvider = new ErrorProvider();
+        }
         private void FillcmbCountry()
         {
             cmbCountries.StartIndex = clsCountry.GetCountryIDByName("Yemen") - 1;
@@ -55,6 +60,7 @@ namespace DVLD_Project
 
         private void PeopleLoad()
         {
+           
             FillcmbCountry();
             if (Mode == enMode.AddNew)
             {
@@ -94,12 +100,13 @@ namespace DVLD_Project
             else
             { rdbFemale.Checked = true; 
             }
-          
-            cmbCountries.SelectedIndex = _Person.NationalityCountryID - 1;
+           cmbCountries.SelectedIndex = cmbCountries.FindString(_Person.CountryInfo.CountryName);
+           
 
             if (_Person.ImagePath != "")
             {
-                pbImageSex.Load(_Person.ImagePath);
+                pbImageSex.ImageLocation = _Person.ImagePath;
+                
             }
             else
             {
@@ -116,14 +123,56 @@ namespace DVLD_Project
 
             selectedFilePath = _Person.ImagePath;
 
-            if (_Person.Gendor == 0)
+           
+        }
+
+        private bool _HandlePersonImage()
+        {
+
+            //this procedure will handle the person image,
+            //it will take care of deleting the old image from the folder
+            //in case the image changed. and it will rename the new image with guid and 
+            // place it in the images folder.
+
+
+            //_Person.ImagePath contains the old Image, we check if it changed then we copy the new image
+            if (_Person.ImagePath != pbImageSex.ImageLocation)
             {
-                rdbMale.Checked = true;
+                if (_Person.ImagePath != "")
+                {
+                    //first we delete the old image from the folder in case there is any.
+
+                    try
+                    {
+                        File.Delete(_Person.ImagePath);
+                    }
+                    catch (IOException)
+                    {
+                        // We could not delete the file.
+                        //log it later   
+                    }
+
+                }
+
+                if (pbImageSex.ImageLocation != null)
+                {
+                    //then we copy the new image to the image folder after we rename it
+                    string SourceImageFile = pbImageSex.ImageLocation.ToString();
+
+                    if (clsUtil.CopyImageToProjectImagesFolder(ref SourceImageFile))
+                    {
+                        pbImageSex.ImageLocation = SourceImageFile;
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error Copying Image File", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
+
             }
-            else
-            {
-                rdbFemale.Checked = true;
-            }
+            return true;
         }
 
         private void frmEditPeople_Load(object sender, EventArgs e)
@@ -208,16 +257,26 @@ namespace DVLD_Project
                 return;
             }
 
-            _Person.NationalNo = txtNationalNo.Text;
-            _Person.FirstName = txtFirstName.Text;
-            _Person.SecondName = txtSecondName.Text;
-            _Person.ThirdName = txtThirdName.Text;
-            _Person.LastName = txtLastName.Text;
-            _Person.Email = txtEmail.Text;
-            _Person.Phone = txtPhone.Text;
-            _Person.Address = txtAddress.Text;
+
+            if (!_HandlePersonImage())
+                return;
+
+
+            _Person.NationalNo = txtNationalNo.Text.Trim();
+            _Person.FirstName = txtFirstName.Text.Trim();
+            _Person.SecondName = txtSecondName.Text.Trim();
+            _Person.ThirdName = txtThirdName.Text.Trim();
+            _Person.LastName = txtLastName.Text.Trim();
+            _Person.Email = txtEmail.Text.Trim();
+            _Person.Phone = txtPhone.Text.Trim();
+            _Person.Address = txtAddress.Text.Trim();
             _Person.DateOfBirth = dtpDateOfBirth.Value.Date;
-            _Person.ImagePath = selectedFilePath;
+
+            if (pbImageSex.ImageLocation != null)
+                _Person.ImagePath = pbImageSex.ImageLocation;
+            else
+                _Person.ImagePath = "";
+
             _Person.NationalityCountryID = clsCountry.GetCountryIDByName(cmbCountries.Text);
             if (rdbMale.Checked)
             {
@@ -229,9 +288,15 @@ namespace DVLD_Project
             }
 
             _Person.NationalityCountryID = clsCountry.GetCountryIDByName(cmbCountries.Text);
+
             if (_Person.Save())
             {
+                Mode = enMode.Update;
+                lbTypeOfEdit.Text = "Update Person Info " + _Person.PersonID.ToString();
+                lbPersonID.Text = _Person.PersonID.ToString();
+
                 MessageBox.Show("Data Saved Successfully.");
+                DataBack?.Invoke(this, _Person.PersonID);
             }
             else
             {
@@ -239,9 +304,7 @@ namespace DVLD_Project
             }
 
 
-            Mode = enMode.Update;
-            lbTypeOfEdit.Text = "Update Person Info " + _Person.PersonID.ToString();
-            lbPersonID.Text = _Person.PersonID.ToString();
+           
         }
 
         private bool IsValidEmail(string email)
@@ -271,11 +334,11 @@ namespace DVLD_Project
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 // Process the selected file
-                selectedFilePath = openFileDialog1.FileName;
+                string FilePath = openFileDialog1.FileName;
 
                 try
                 {
-                    pbImageSex.Image = Image.FromFile(selectedFilePath);
+                    pbImageSex.Image = Image.FromFile(FilePath);
                     llbRemoveImage.Visible = true;
                 }
                 catch (Exception ex)
@@ -288,23 +351,25 @@ namespace DVLD_Project
         private void llbRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             pbImageSex.ImageLocation = null;
+
+
+
+            if (rdbMale.Checked)
+                pbImageSex.Image = imlRequireImages.Images[0];
+            else
+                pbImageSex.Image = imlRequireImages.Images[1];
+
             llbRemoveImage.Visible = false;
         }
 
         private void rdbMale_CheckedChanged(object sender, EventArgs e)
         {
-            if (pbImageSex.Image != null)
-            {
-                pbImageSex.Image = imlRequireImages.Images[0];
-            }
+           
         }
 
         private void rdbFemale_CheckedChanged(object sender, EventArgs e)
         {
-            if (pbImageSex.Image != null)
-            {
-                pbImageSex.Image = imlRequireImages.Images[1];
-            }
+            
         }
 
         private void txtEmail_Validating(object sender, CancelEventArgs e)
@@ -349,6 +414,22 @@ namespace DVLD_Project
             else
             {
                 errorProvider1.SetError(txtNationalNo, null);
+            }
+        }
+
+        private void rdbMale_Click(object sender, EventArgs e)
+        {
+            if (pbImageSex.ImageLocation == null)
+            {
+                pbImageSex.Image = imlRequireImages.Images[0];
+            }
+        }
+
+        private void rdbFemale_Click(object sender, EventArgs e)
+        {
+            if (pbImageSex.ImageLocation == null)
+            {
+                pbImageSex.Image = imlRequireImages.Images[1];
             }
         }
     }

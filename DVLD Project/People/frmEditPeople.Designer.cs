@@ -159,6 +159,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnClose.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnClose.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -401,6 +402,7 @@
             this.rdbFemale.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdbFemale.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             this.rdbFemale.CheckedChanged += new System.EventHandler(this.rdbFemale_CheckedChanged);
+            this.rdbFemale.Click += new System.EventHandler(this.rdbFemale_Click);
             // 
             // rdbMale
             // 
@@ -420,6 +422,7 @@
             this.rdbMale.UncheckedState.FillColor = System.Drawing.Color.Transparent;
             this.rdbMale.UncheckedState.InnerColor = System.Drawing.Color.Transparent;
             this.rdbMale.CheckedChanged += new System.EventHandler(this.rdbMale_CheckedChanged);
+            this.rdbMale.Click += new System.EventHandler(this.rdbMale_Click);
             // 
             // txtNationalNo
             // 
@@ -709,9 +712,11 @@
             // 
             // frmEditPeople
             // 
+            this.AcceptButton = this.btnSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1157, 595);
             this.Controls.Add(this.lbPersonID);
             this.Controls.Add(this.label13);

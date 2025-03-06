@@ -79,11 +79,7 @@ namespace DVLD_Project
             DGPeople.DataSource = dv;
         }
 
-        private void guna2PictureBox1_Click(object sender, EventArgs e)
-        {
-            Form frmedit = new frmEditPeople(-1);
-            frmedit.Show();
-        }
+       
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -174,6 +170,12 @@ namespace DVLD_Project
         private void btnClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            Form frmedit = new frmEditPeople();
+            frmedit.Show();
         }
     }
 }

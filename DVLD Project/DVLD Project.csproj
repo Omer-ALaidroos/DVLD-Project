@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsvalidation.cs" />
     <Compile Include="People\frmEditPeople.cs">
       <SubType>Form</SubType>
@@ -132,6 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\Male.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\Resources\Female.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

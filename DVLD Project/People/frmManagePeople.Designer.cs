@@ -47,14 +47,13 @@
             this.cmbFilterManagePeople = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFilterManagePeople = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lbNumberOfRecords = new System.Windows.Forms.Label();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
+            this.btnAdd = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeopleIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGPeople)).BeginInit();
             this.cmsManagePeople.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pbManagePeopleIcon
@@ -259,19 +258,6 @@
             this.txtFilterManagePeople.TextChanged += new System.EventHandler(this.txtFilterManagePeople_TextChanged);
             this.txtFilterManagePeople.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterManagePeople_KeyPress);
             // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(1161, 224);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(81, 51);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 6;
-            this.guna2PictureBox1.TabStop = false;
-            this.guna2PictureBox1.Click += new System.EventHandler(this.guna2PictureBox1_Click);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -308,16 +294,36 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
+            // btnAdd
+            // 
+            this.btnAdd.AutoRoundedCorners = true;
+            this.btnAdd.BackColor = System.Drawing.Color.Transparent;
+            this.btnAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.BackgroundImage")));
+            this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAdd.BorderThickness = 1;
+            this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAdd.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAdd.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAdd.FillColor = System.Drawing.Color.Transparent;
+            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnAdd.ForeColor = System.Drawing.Color.White;
+            this.btnAdd.Location = new System.Drawing.Point(1081, 200);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(129, 59);
+            this.btnAdd.TabIndex = 10;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // frmManagePeople
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1278, 703);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lbNumberOfRecords);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.guna2PictureBox1);
             this.Controls.Add(this.txtFilterManagePeople);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbFilterManagePeople);
@@ -334,7 +340,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbManagePeopleIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGPeople)).EndInit();
             this.cmsManagePeople.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -355,9 +360,9 @@
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sendEmailToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem phoneCallToolStripMenuItem;
-        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbNumberOfRecords;
         private Guna.UI2.WinForms.Guna2Button btnClose;
+        private Guna.UI2.WinForms.Guna2Button btnAdd;
     }
 }
