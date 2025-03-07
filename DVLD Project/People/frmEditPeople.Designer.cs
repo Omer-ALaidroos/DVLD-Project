@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditPeople));
             this.lbTypeOfEdit = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pbImageSex = new Guna.UI2.WinForms.Guna2PictureBox();
             this.btnClose = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.llbRemoveImage = new System.Windows.Forms.LinkLabel();
@@ -75,8 +74,8 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.imlRequireImages = new System.Windows.Forms.ImageList(this.components);
+            this.pbPersonImage = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImageSex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).BeginInit();
@@ -87,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lbTypeOfEdit
@@ -102,7 +102,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.pbImageSex);
+            this.groupBox1.Controls.Add(this.pbPersonImage);
             this.groupBox1.Controls.Add(this.btnClose);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.llbRemoveImage);
@@ -143,19 +143,6 @@
             this.groupBox1.Size = new System.Drawing.Size(1090, 442);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            // 
-            // pbImageSex
-            // 
-            this.pbImageSex.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pbImageSex.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbImageSex.FillColor = System.Drawing.Color.Transparent;
-            this.pbImageSex.ImageRotate = 0F;
-            this.pbImageSex.Location = new System.Drawing.Point(874, 157);
-            this.pbImageSex.Name = "pbImageSex";
-            this.pbImageSex.Size = new System.Drawing.Size(184, 165);
-            this.pbImageSex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbImageSex.TabIndex = 37;
-            this.pbImageSex.TabStop = false;
             // 
             // btnClose
             // 
@@ -710,6 +697,17 @@
             this.imlRequireImages.Images.SetKeyName(0, "Male.png");
             this.imlRequireImages.Images.SetKeyName(1, "Female.png");
             // 
+            // pbPersonImage
+            // 
+            this.pbPersonImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pbPersonImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbPersonImage.Location = new System.Drawing.Point(868, 149);
+            this.pbPersonImage.Name = "pbPersonImage";
+            this.pbPersonImage.Size = new System.Drawing.Size(180, 179);
+            this.pbPersonImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPersonImage.TabIndex = 37;
+            this.pbPersonImage.TabStop = false;
+            // 
             // frmEditPeople
             // 
             this.AcceptButton = this.btnSave;
@@ -729,7 +727,6 @@
             this.Load += new System.EventHandler(this.frmEditPeople_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImageSex)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox6)).EndInit();
@@ -741,6 +738,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -790,8 +788,8 @@
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private Guna.UI2.WinForms.Guna2Button btnClose;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private Guna.UI2.WinForms.Guna2PictureBox pbImageSex;
         private System.Windows.Forms.ErrorProvider errorProvider1;
         private System.Windows.Forms.ImageList imlRequireImages;
+        private System.Windows.Forms.PictureBox pbPersonImage;
     }
 }

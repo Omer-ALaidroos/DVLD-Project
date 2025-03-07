@@ -99,6 +99,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmManagePeople.resx">
       <DependentUpon>frmManagePeople.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmPersonDetails.resx">
       <DependentUpon>frmPersonDetails.cs</DependentUpon>
@@ -139,6 +140,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Resources\Female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Properties\Resources\address.png" />
+    <Content Include="Properties\Resources\computer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

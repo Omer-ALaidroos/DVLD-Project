@@ -116,10 +116,11 @@
             this.DGPeople.ReadOnly = true;
             this.DGPeople.RowHeadersVisible = false;
             this.DGPeople.RowHeadersWidth = 51;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cambria", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Coral;
             this.DGPeople.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DGPeople.RowTemplate.Height = 26;
-            this.DGPeople.Size = new System.Drawing.Size(1259, 288);
+            this.DGPeople.Size = new System.Drawing.Size(1503, 288);
             this.DGPeople.TabIndex = 2;
             this.DGPeople.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.DGPeople.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -300,6 +301,7 @@
             this.btnAdd.BackColor = System.Drawing.Color.Transparent;
             this.btnAdd.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnAdd.BackgroundImage")));
             this.btnAdd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnAdd.BorderRadius = 28;
             this.btnAdd.BorderThickness = 1;
             this.btnAdd.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAdd.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -319,7 +321,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1278, 703);
+            this.ClientSize = new System.Drawing.Size(1522, 781);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lbNumberOfRecords);

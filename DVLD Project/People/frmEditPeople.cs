@@ -67,8 +67,8 @@ namespace DVLD_Project
                 rdbMale.Checked = true;
                 _Person = new clsPerson();
                 lbTypeOfEdit.Text = "Add New Person";
-               
-                pbImageSex.Image = imlRequireImages.Images[0];
+
+                pbPersonImage.Image = Resources.Male;
                 llbRemoveImage.Visible = false;
                 return;
             }
@@ -105,18 +105,18 @@ namespace DVLD_Project
 
             if (_Person.ImagePath != "")
             {
-                pbImageSex.ImageLocation = _Person.ImagePath;
+                pbPersonImage.ImageLocation = _Person.ImagePath;
                 
             }
             else
             {
                 if (rdbMale.Checked)
                 {
-                    pbImageSex.Image = imlRequireImages.Images[0];
+                    pbPersonImage.Image =Resources.Male;
                 }
                 else
                 {
-                    pbImageSex.Image = imlRequireImages.Images[1];
+                    pbPersonImage.Image =Resources.Female;
                 }
               
             }
@@ -136,7 +136,7 @@ namespace DVLD_Project
 
 
             //_Person.ImagePath contains the old Image, we check if it changed then we copy the new image
-            if (_Person.ImagePath != pbImageSex.ImageLocation)
+            if (_Person.ImagePath != pbPersonImage.ImageLocation)
             {
                 if (_Person.ImagePath != "")
                 {
@@ -154,14 +154,14 @@ namespace DVLD_Project
 
                 }
 
-                if (pbImageSex.ImageLocation != null)
+                if (pbPersonImage.ImageLocation != null)
                 {
                     //then we copy the new image to the image folder after we rename it
-                    string SourceImageFile = pbImageSex.ImageLocation.ToString();
+                    string SourceImageFile = pbPersonImage.ImageLocation.ToString();
 
                     if (clsUtil.CopyImageToProjectImagesFolder(ref SourceImageFile))
                     {
-                        pbImageSex.ImageLocation = SourceImageFile;
+                        pbPersonImage.ImageLocation = SourceImageFile;
                         return true;
                     }
                     else
@@ -272,8 +272,8 @@ namespace DVLD_Project
             _Person.Address = txtAddress.Text.Trim();
             _Person.DateOfBirth = dtpDateOfBirth.Value.Date;
 
-            if (pbImageSex.ImageLocation != null)
-                _Person.ImagePath = pbImageSex.ImageLocation;
+            if (pbPersonImage.ImageLocation != null)
+                _Person.ImagePath = pbPersonImage.ImageLocation;
             else
                 _Person.ImagePath = "";
 
@@ -288,7 +288,7 @@ namespace DVLD_Project
             }
 
             _Person.NationalityCountryID = clsCountry.GetCountryIDByName(cmbCountries.Text);
-
+            
             if (_Person.Save())
             {
                 Mode = enMode.Update;
@@ -334,30 +334,25 @@ namespace DVLD_Project
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 // Process the selected file
-                string FilePath = openFileDialog1.FileName;
-
-                try
-                {
-                    pbImageSex.Image = Image.FromFile(FilePath);
-                    llbRemoveImage.Visible = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error loading image: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                string selectedFilePath = openFileDialog1.FileName;
+                pbPersonImage.Load(selectedFilePath);
+                string f = pbPersonImage.ImageLocation;
+                llbRemoveImage.Visible = true;
+                // ...
             }
         }
+        
 
         private void llbRemoveImage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            pbImageSex.ImageLocation = null;
+            pbPersonImage.ImageLocation = null;
 
 
 
             if (rdbMale.Checked)
-                pbImageSex.Image = imlRequireImages.Images[0];
+                pbPersonImage.Image = imlRequireImages.Images[0];
             else
-                pbImageSex.Image = imlRequireImages.Images[1];
+                pbPersonImage.Image = imlRequireImages.Images[1];
 
             llbRemoveImage.Visible = false;
         }
@@ -419,17 +414,17 @@ namespace DVLD_Project
 
         private void rdbMale_Click(object sender, EventArgs e)
         {
-            if (pbImageSex.ImageLocation == null)
+            if (pbPersonImage.ImageLocation == null)
             {
-                pbImageSex.Image = imlRequireImages.Images[0];
+                pbPersonImage.Image = Resources.Male;
             }
         }
 
         private void rdbFemale_Click(object sender, EventArgs e)
         {
-            if (pbImageSex.ImageLocation == null)
+            if (pbPersonImage.ImageLocation == null)
             {
-                pbImageSex.Image = imlRequireImages.Images[1];
+                pbPersonImage.Image = Resources.Female;
             }
         }
     }
