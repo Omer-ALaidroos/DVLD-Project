@@ -39,7 +39,7 @@
             this.lbNationalNo = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.lbPersonID = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.llbEditPersonInfo = new System.Windows.Forms.LinkLabel();
             this.pbImagePerson = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox8 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox7 = new Guna.UI2.WinForms.Guna2PictureBox();
@@ -81,7 +81,7 @@
             this.groupBox1.Controls.Add(this.lbNationalNo);
             this.groupBox1.Controls.Add(this.lbName);
             this.groupBox1.Controls.Add(this.lbPersonID);
-            this.groupBox1.Controls.Add(this.linkLabel1);
+            this.groupBox1.Controls.Add(this.llbEditPersonInfo);
             this.groupBox1.Controls.Add(this.pbImagePerson);
             this.groupBox1.Controls.Add(this.guna2PictureBox8);
             this.groupBox1.Controls.Add(this.guna2PictureBox7);
@@ -101,9 +101,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Sitka Heading", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 15);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(998, 378);
+            this.groupBox1.Size = new System.Drawing.Size(998, 366);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Person Information";
@@ -200,15 +200,16 @@
             this.lbPersonID.TabIndex = 40;
             this.lbPersonID.Text = "Id";
             // 
-            // linkLabel1
+            // llbEditPersonInfo
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(786, 76);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(119, 21);
-            this.linkLabel1.TabIndex = 39;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Edit Person Infp";
+            this.llbEditPersonInfo.AutoSize = true;
+            this.llbEditPersonInfo.Location = new System.Drawing.Point(786, 76);
+            this.llbEditPersonInfo.Name = "llbEditPersonInfo";
+            this.llbEditPersonInfo.Size = new System.Drawing.Size(119, 21);
+            this.llbEditPersonInfo.TabIndex = 39;
+            this.llbEditPersonInfo.TabStop = true;
+            this.llbEditPersonInfo.Text = "Edit Person Infp";
+            this.llbEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbEditPersonInfo_LinkClicked);
             // 
             // pbImagePerson
             // 
@@ -443,7 +444,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private Guna.UI2.WinForms.Guna2PictureBox pbImagePerson;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel llbEditPersonInfo;
         private System.Windows.Forms.Label lbCountry;
         private System.Windows.Forms.Label lbPhone;
         private System.Windows.Forms.Label lbDateOfBirth;

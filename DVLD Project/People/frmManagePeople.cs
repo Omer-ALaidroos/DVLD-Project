@@ -133,16 +133,11 @@ namespace DVLD_Project
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            clsPerson Person = new clsPerson((int)DGPeople.CurrentRow.Cells[0].Value, (string)DGPeople.CurrentRow.Cells[1].Value,
-                (string)DGPeople.CurrentRow.Cells[2].Value, (string)DGPeople.CurrentRow.Cells[3].Value,
-                (string)DGPeople.CurrentRow.Cells[4].Value, (string)DGPeople.CurrentRow.Cells[5].Value,
-                Convert.ToDateTime(DGPeople.CurrentRow.Cells[6].Value), (byte)DGPeople.CurrentRow.Cells[7].Value,
-                (string)DGPeople.CurrentRow.Cells[8].Value, (string)DGPeople.CurrentRow.Cells[9].Value,
-                (string)DGPeople.CurrentRow.Cells[10].Value, (int)DGPeople.CurrentRow.Cells[11].Value,
-                (string)DGPeople.CurrentRow.Cells[12].Value);
+           
 
 
-            frmPersonDetails frm = new frmPersonDetails(Person);
+            int PersonID = (int)DGPeople.CurrentRow.Cells[0].Value;
+            frmPersonDetails frm = new frmPersonDetails(PersonID);
             frm.ShowDialog();
         }
 

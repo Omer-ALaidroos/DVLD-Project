@@ -61,7 +61,7 @@
             this.pbManagePeopleIcon.BackColor = System.Drawing.Color.Transparent;
             this.pbManagePeopleIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbManagePeopleIcon.Image")));
             this.pbManagePeopleIcon.ImageRotate = 0F;
-            this.pbManagePeopleIcon.Location = new System.Drawing.Point(495, 46);
+            this.pbManagePeopleIcon.Location = new System.Drawing.Point(825, 24);
             this.pbManagePeopleIcon.Name = "pbManagePeopleIcon";
             this.pbManagePeopleIcon.Size = new System.Drawing.Size(241, 157);
             this.pbManagePeopleIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -74,7 +74,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Georgia", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.IndianRed;
-            this.label1.Location = new System.Drawing.Point(503, 195);
+            this.label1.Location = new System.Drawing.Point(833, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(233, 32);
             this.label1.TabIndex = 1;
@@ -120,7 +120,7 @@
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Coral;
             this.DGPeople.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DGPeople.RowTemplate.Height = 26;
-            this.DGPeople.Size = new System.Drawing.Size(1503, 288);
+            this.DGPeople.Size = new System.Drawing.Size(1677, 288);
             this.DGPeople.TabIndex = 2;
             this.DGPeople.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.DGPeople.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -288,9 +288,9 @@
             this.btnClose.FillColor = System.Drawing.Color.LightCoral;
             this.btnClose.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(1064, 616);
+            this.btnClose.Location = new System.Drawing.Point(1470, 616);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(109, 33);
+            this.btnClose.Size = new System.Drawing.Size(129, 55);
             this.btnClose.TabIndex = 9;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -310,7 +310,7 @@
             this.btnAdd.FillColor = System.Drawing.Color.Transparent;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.Location = new System.Drawing.Point(1081, 200);
+            this.btnAdd.Location = new System.Drawing.Point(1455, 201);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(129, 59);
             this.btnAdd.TabIndex = 10;
@@ -321,7 +321,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1522, 781);
+            this.ClientSize = new System.Drawing.Size(1696, 781);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lbNumberOfRecords);

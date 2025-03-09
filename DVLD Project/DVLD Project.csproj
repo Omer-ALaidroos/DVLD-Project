@@ -54,6 +54,12 @@
   <ItemGroup>
     <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsvalidation.cs" />
+    <Compile Include="People\Controls\ucPersonDetailsWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="People\Controls\ucPersonDetailsWithFilter.Designer.cs">
+      <DependentUpon>ucPersonDetailsWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="People\frmEditPeople.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,12 +91,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ucPersonDetails.cs">
+    <Compile Include="People\Controls\ucPersonDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ucPersonDetails.Designer.cs">
+    <Compile Include="People\Controls\ucPersonDetails.Designer.cs">
       <DependentUpon>ucPersonDetails.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="People\Controls\ucPersonDetailsWithFilter.resx">
+      <DependentUpon>ucPersonDetailsWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="People\frmEditPeople.resx">
       <DependentUpon>frmEditPeople.cs</DependentUpon>
     </EmbeddedResource>
@@ -109,7 +118,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ucPersonDetails.resx">
+    <EmbeddedResource Include="People\Controls\ucPersonDetails.resx">
       <DependentUpon>ucPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

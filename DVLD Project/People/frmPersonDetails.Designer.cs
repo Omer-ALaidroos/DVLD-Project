@@ -38,18 +38,10 @@
             // 
             // ucPersonDetails1
             // 
-            this.ucPersonDetails1.Address = "Address";
-            this.ucPersonDetails1.BirthDate = "Date";
-            this.ucPersonDetails1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ucPersonDetails1.Email = "Email";
-            this.ucPersonDetails1.Gender = "Gender";
-            this.ucPersonDetails1.Location = new System.Drawing.Point(28, 106);
+            this.ucPersonDetails1.Location = new System.Drawing.Point(0, 0);
             this.ucPersonDetails1.Name = "ucPersonDetails1";
-            this.ucPersonDetails1.NationalNo = "National No";
-            this.ucPersonDetails1.PersonID = "Id";
-            this.ucPersonDetails1.PhoneNo = "Phone";
-            this.ucPersonDetails1.Size = new System.Drawing.Size(1004, 356);
-            this.ucPersonDetails1.TabIndex = 0;
+            this.ucPersonDetails1.Size = new System.Drawing.Size(1004, 376);
+            this.ucPersonDetails1.TabIndex = 3;
             // 
             // label1
             // 
@@ -58,7 +50,7 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(371, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(282, 39);
+            this.label1.Size = new System.Drawing.Size(276, 38);
             this.label1.TabIndex = 1;
             this.label1.Text = "Person Detailes";
             // 
