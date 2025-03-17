@@ -13,73 +13,160 @@ namespace DVLD_Project
 {
     public partial class frmManagePeople : Form
     {
+
+        private static DataTable _dtAllPeople = clsPerson.GetAllPeople();
+
+        //only select the columns that you want to show in the grid
+        private DataTable _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
+                                                         "FirstName", "SecondName", "ThirdName", "LastName",
+                                                         "GenderCaption", "DateOfBirth", "CountryName",
+                                                         "Phone", "Email");
         public frmManagePeople()
         {
             InitializeComponent();
         }
 
-        DataTable dtManagePeople;
-        private void _FillFiltreBoxByData()
-        {
-            foreach (DataGridViewColumn column in DGPeople.Columns)
-            {
-                cmbFilterManagePeople.Items.Add(column.HeaderText);
-            }
-
-            cmbFilterManagePeople.StartIndex = 0;
-        }
+       
+      
 
         private void frmManagePeople_Load(object sender, EventArgs e)
         {
             this.StartPosition = FormStartPosition.CenterScreen;
-            dtManagePeople = clsPerson.GetAllPeople();
-            DGPeople.DataSource = dtManagePeople;
+            _dtPeople = clsPerson.GetAllPeople();
+            DGPeople.DataSource = _dtPeople;
             lbNumberOfRecords.Text = DGPeople.RowCount.ToString();
-            _FillFiltreBoxByData();
+
+
+            DGPeople.DataSource = _dtPeople;
+            cmbFilterManagePeople.SelectedIndex = 0;
+            lbNumberOfRecords.Text = DGPeople.Rows.Count.ToString();
+            if (DGPeople.Rows.Count > 0)
+            {
+
+                DGPeople.Columns[0].HeaderText = "Person ID";
+                DGPeople.Columns[0].Width = 110;
+
+                DGPeople.Columns[1].HeaderText = "National No.";
+                DGPeople.Columns[1].Width = 120;
+
+
+                DGPeople.Columns[2].HeaderText = "First Name";
+                DGPeople.Columns[2].Width = 120;
+
+                DGPeople.Columns[3].HeaderText = "Second Name";
+                DGPeople.Columns[3].Width = 140;
+
+
+                DGPeople.Columns[4].HeaderText = "Third Name";
+                DGPeople.Columns[4].Width = 120;
+
+                DGPeople.Columns[5].HeaderText = "Last Name";
+                DGPeople.Columns[5].Width = 120;
+
+                DGPeople.Columns[6].HeaderText = "Gendor";
+                DGPeople.Columns[6].Width = 120;
+
+                DGPeople.Columns[7].HeaderText = "Date Of Birth";
+                DGPeople.Columns[7].Width = 140;
+
+                DGPeople.Columns[8].HeaderText = "Nationality";
+                DGPeople.Columns[8].Width = 120;
+
+
+                DGPeople.Columns[9].HeaderText = "Phone";
+                DGPeople.Columns[9].Width = 120;
+
+
+                DGPeople.Columns[10].HeaderText = "Email";
+                DGPeople.Columns[10].Width = 170;
+            }
+
+           
         }
 
         public void RefreshDataOfDGPeople()
         {
-            dtManagePeople = clsPerson.GetAllPeople();
-            DGPeople.DataSource = dtManagePeople;
-            lbNumberOfRecords.Text = DGPeople.RowCount.ToString();
+            _dtAllPeople = clsPerson.GetAllPeople();
+            _dtPeople = _dtAllPeople.DefaultView.ToTable(false, "PersonID", "NationalNo",
+                                                       "FirstName", "SecondName", "ThirdName", "LastName",
+                                                       "GenderCaption", "DateOfBirth", "CountryName",
+                                                       "Phone", "Email");
+
+            DGPeople.DataSource = _dtPeople;
+            lbNumberOfRecords.Text = DGPeople.Rows.Count.ToString();
+           
         }
         private void txtFilterManagePeople_TextChanged(object sender, EventArgs e)
         {
-            if(txtFilterManagePeople.Text == " ")
+            string FilterColumn = "";
+            //Map Selected Filter to real Column name 
+            switch (cmbFilterManagePeople.Text)
             {
-                DGPeople.DataSource = dtManagePeople;
+                case "Person ID":
+                    FilterColumn = "PersonID";
+                    break;
+
+                case "National No.":
+                    FilterColumn = "NationalNo";
+                    break;
+
+                case "First Name":
+                    FilterColumn = "FirstName";
+                    break;
+
+                case "Second Name":
+                    FilterColumn = "SecondName";
+                    break;
+
+                case "Third Name":
+                    FilterColumn = "ThirdName";
+                    break;
+
+                case "Last Name":
+                    FilterColumn = "LastName";
+                    break;
+
+                case "Nationality":
+                    FilterColumn = "CountryName";
+                    break;
+
+                case "Gendor":
+                    FilterColumn = "GendorCaption";
+                    break;
+
+                case "Phone":
+                    FilterColumn = "Phone";
+                    break;
+
+                case "Email":
+                    FilterColumn = "Email";
+                    break;
+
+                default:
+                    FilterColumn = "None";
+                    break;
+
+            }
+
+            //Reset the filters in case nothing selected or filter value conains nothing.
+            if (txtFilterManagePeople.Text.Trim() == "" || FilterColumn == "None")
+            {
+                _dtPeople.DefaultView.RowFilter = "";
+                lbNumberOfRecords.Text = DGPeople.Rows.Count.ToString();
                 return;
             }
-            if (cmbFilterManagePeople.SelectedItem == null || txtFilterManagePeople.Text == "")
-            {
-                DGPeople.DataSource = dtManagePeople;
-                return;
-            }
 
-            string filterColumn = cmbFilterManagePeople.SelectedItem.ToString();
-            string filterText = txtFilterManagePeople.Text;
-
-            // Check the data type of the column
-            DataColumn column = dtManagePeople.Columns[filterColumn];
-            StringBuilder filterBuilder = new StringBuilder();
-
-            if (column.DataType == typeof(int))
-            {
-                filterBuilder.AppendFormat("[{0}] = {1}", filterColumn, filterText);
-            }
+            if (FilterColumn == "PersonID")
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] = {1}", FilterColumn, txtFilterManagePeople.Text.Trim());
             else
-            {
-                filterBuilder.AppendFormat("[{0}] LIKE '%{1}%'", filterColumn, filterText);
-            }
+                _dtPeople.DefaultView.RowFilter = string.Format("[{0}] LIKE '{1}%'", FilterColumn, txtFilterManagePeople.Text.Trim());
 
-            DataView dv = dtManagePeople.DefaultView;
-            dv.RowFilter = filterBuilder.ToString();
+            lbNumberOfRecords.Text = DGPeople.Rows.Count.ToString();
 
-            DGPeople.DataSource = dv;
+
         }
 
-       
+
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -99,8 +186,8 @@ namespace DVLD_Project
                 if (clsPerson.DeletePerson((int)DGPeople.CurrentRow.Cells[0].Value))
                 {
                     MessageBox.Show("Deleted Successfully", "Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    dtManagePeople = clsPerson.GetAllPeople();
-                    DGPeople.DataSource = dtManagePeople;
+                    _dtPeople = clsPerson.GetAllPeople();
+                    DGPeople.DataSource = _dtPeople;
                 }
                 else
                 {
@@ -143,23 +230,8 @@ namespace DVLD_Project
 
         private void txtFilterManagePeople_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(cmbFilterManagePeople.SelectedIndex == 1 || cmbFilterManagePeople.SelectedIndex == 2 ||
-                cmbFilterManagePeople.SelectedIndex == 3 || cmbFilterManagePeople.SelectedIndex == 4 ||
-                cmbFilterManagePeople.SelectedIndex == 5 || cmbFilterManagePeople.SelectedIndex == 8 ||
-                cmbFilterManagePeople.SelectedIndex == 10 )
-            {
-                if(!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) &&  e.KeyChar != ' ')
-                {
-                    e.Handled = true;
-                }
-            }
-            else
-            {
-                if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
-                {
-                    e.Handled = true;
-                }
-            }
+            if (cmbFilterManagePeople.Text == "Person ID")
+                e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -171,6 +243,24 @@ namespace DVLD_Project
         {
             Form frmedit = new frmEditPeople();
             frmedit.Show();
+
+            RefreshDataOfDGPeople();
+        }
+
+        private void pbManagePeopleIcon_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbFilterManagePeople_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            txtFilterManagePeople.Visible = (cmbFilterManagePeople.Text != "None");
+
+            if (txtFilterManagePeople.Visible)
+            {
+                txtFilterManagePeople.Text = "";
+                txtFilterManagePeople.Focus();
+            }
         }
     }
 }

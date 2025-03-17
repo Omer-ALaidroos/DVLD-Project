@@ -59,7 +59,7 @@ namespace DVLD_Project.People.Controls
 
        
 
-
+        
         private int _PersonID = -1;
 
         public int PersonID
@@ -111,15 +111,7 @@ namespace DVLD_Project.People.Controls
 
         private void btnFind_Click(object sender, EventArgs e)
         {
-            if (!this.ValidateChildren())
-            {
-                //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-
-            }
-
-            FindNow();
+           
         }
 
         private void ctrlPersonCardWithFilter_Load(object sender, EventArgs e)
@@ -146,9 +138,7 @@ namespace DVLD_Project.People.Controls
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
         {
-            frmEditPeople frm1 = new frmEditPeople();
-            frm1.DataBack += DataBackEvent; // Subscribe to the event
-            frm1.ShowDialog();
+            
 
         }
 
@@ -184,7 +174,35 @@ namespace DVLD_Project.People.Controls
         }
         private void ucPersonDetailsWithFilter_Load(object sender, EventArgs e)
         {
+            cbFilterBy.SelectedIndex = 0;
+        }
 
+        private void btnFind_Click_1(object sender, EventArgs e)
+        {
+            if (!this.ValidateChildren())
+            {
+                //Here we dont continue becuase the form is not valid
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+
+            }
+
+            FindNow();
+        }
+
+        private void btnAddNewPerson_Click_1(object sender, EventArgs e)
+        {
+            frmEditPeople frm1 = new frmEditPeople();
+            frm1.DataBack += DataBackEvent; // Subscribe to the event
+            frm1.ShowDialog();
+        }
+
+        private void btnAddNewPerson_Click_2(object sender, EventArgs e)
+        {
+
+            frmEditPeople frm1 = new frmEditPeople();
+            frm1.DataBack += DataBackEvent; // Subscribe to the event
+            frm1.ShowDialog();
         }
     }
 }

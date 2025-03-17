@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucPersonDetailsWithFilter));
-            this.ucPersonDetails1 = new DVLD_Project.ucPersonDetails();
             this.gbFilters = new System.Windows.Forms.GroupBox();
             this.btnAddNewPerson = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
@@ -38,16 +37,10 @@
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ucPersonDetails1 = new DVLD_Project.ucPersonDetails();
             this.gbFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ucPersonDetails1
-            // 
-            this.ucPersonDetails1.Location = new System.Drawing.Point(22, 95);
-            this.ucPersonDetails1.Name = "ucPersonDetails1";
-            this.ucPersonDetails1.Size = new System.Drawing.Size(1004, 376);
-            this.ucPersonDetails1.TabIndex = 0;
             // 
             // gbFilters
             // 
@@ -75,6 +68,7 @@
             this.btnAddNewPerson.Size = new System.Drawing.Size(44, 37);
             this.btnAddNewPerson.TabIndex = 20;
             this.btnAddNewPerson.UseVisualStyleBackColor = true;
+            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click_2);
             // 
             // btnFind
             // 
@@ -86,6 +80,7 @@
             this.btnFind.Size = new System.Drawing.Size(44, 37);
             this.btnFind.TabIndex = 18;
             this.btnFind.UseVisualStyleBackColor = true;
+            this.btnFind.Click += new System.EventHandler(this.btnFind_Click_1);
             // 
             // cbFilterBy
             // 
@@ -102,17 +97,18 @@
             // txtFilterValue
             // 
             this.txtFilterValue.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFilterValue.Font = new System.Drawing.Font("Arial Narrow", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFilterValue.Location = new System.Drawing.Point(313, 25);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.Size = new System.Drawing.Size(214, 24);
+            this.txtFilterValue.Size = new System.Drawing.Size(214, 25);
             this.txtFilterValue.TabIndex = 17;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 28);
+            this.label1.Location = new System.Drawing.Point(6, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 25);
             this.label1.TabIndex = 19;
@@ -122,6 +118,13 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // ucPersonDetails1
+            // 
+            this.ucPersonDetails1.Location = new System.Drawing.Point(25, 95);
+            this.ucPersonDetails1.Name = "ucPersonDetails1";
+            this.ucPersonDetails1.Size = new System.Drawing.Size(956, 345);
+            this.ucPersonDetails1.TabIndex = 0;
+            // 
             // ucPersonDetailsWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -129,7 +132,7 @@
             this.Controls.Add(this.gbFilters);
             this.Controls.Add(this.ucPersonDetails1);
             this.Name = "ucPersonDetailsWithFilter";
-            this.Size = new System.Drawing.Size(1054, 472);
+            this.Size = new System.Drawing.Size(997, 451);
             this.Load += new System.EventHandler(this.ucPersonDetailsWithFilter_Load);
             this.gbFilters.ResumeLayout(false);
             this.gbFilters.PerformLayout();
