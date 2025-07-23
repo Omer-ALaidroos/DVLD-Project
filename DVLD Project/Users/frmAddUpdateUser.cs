@@ -97,7 +97,7 @@ namespace DVLD_Project.Users
                 txtPassWord.Enabled = false;
                 chbIsActive.Enabled = false;
                 btnSave.Enabled = false;
-                tapLoginInfo.Enabled = false;
+               // tapLoginInfo.Enabled = false;
                 _User = new clsUser();
                 lbTypeOfEdit.Text = "Add New User";
 

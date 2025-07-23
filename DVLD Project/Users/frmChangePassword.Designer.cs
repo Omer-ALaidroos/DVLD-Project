@@ -206,6 +206,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ucUserInfo1);
             this.Name = "frmChangePassword";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmUserInfo";
             this.Load += new System.EventHandler(this.frmUserInfo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

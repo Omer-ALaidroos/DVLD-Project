@@ -96,7 +96,22 @@ namespace DVLDBuisnessLayer
             }
           
         }
-        
+        public static clsUser FindByPersonID(int PersonID)
+        {
+            int UserID = -1;
+            string UserName = "", Password = "";
+            bool IsActive = false;
+
+            bool IsFound = clsUserData.GetUserInfoByPersonID
+                                (PersonID, ref UserID, ref UserName, ref Password, ref IsActive);
+
+            if (IsFound)
+                //we return new object of that User with the right data
+                return new clsUser(UserID, UserID, UserName, Password, IsActive);
+            else
+                return null;
+        }
+
         public static bool DeleteUser(int UserID)
         {
             return clsUserData.DeleteUser(UserID);

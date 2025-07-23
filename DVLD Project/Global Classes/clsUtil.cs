@@ -53,7 +53,11 @@ namespace DVLD_Project.Global_Classes
             return GenerateGUID() + extn;
 
         }
+        public static string DateToShort(DateTime Dt1)
+        {
 
+            return Dt1.ToString("dd/MMM/yyyy");
+        }
         public static bool CopyImageToProjectImagesFolder(ref string sourceFile)
         {
             // this funciton will copy the image to the

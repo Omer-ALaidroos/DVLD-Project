@@ -40,6 +40,7 @@
             // 
             this.ucPersonDetails1.Location = new System.Drawing.Point(0, 0);
             this.ucPersonDetails1.Name = "ucPersonDetails1";
+            this.ucPersonDetails1.PersonID = -1;
             this.ucPersonDetails1.Size = new System.Drawing.Size(1004, 376);
             this.ucPersonDetails1.TabIndex = 3;
             // 
@@ -88,6 +89,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmPersonDetails";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPersonDetails";
             this.TransparencyKey = System.Drawing.Color.Olive;
             this.Load += new System.EventHandler(this.frmPersonDetails_Load);

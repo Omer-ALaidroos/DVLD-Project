@@ -162,7 +162,7 @@
             this.sendEmailToolStripMenuItem,
             this.phoneCallToolStripMenuItem});
             this.cmsManageUsers.Name = "cmsManageUsers";
-            this.cmsManageUsers.Size = new System.Drawing.Size(216, 226);
+            this.cmsManageUsers.Size = new System.Drawing.Size(216, 198);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -410,6 +410,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmManageUsers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmManageUsers";
             this.Load += new System.EventHandler(this.frmManageUsers_Load);
             this.groupBox1.ResumeLayout(false);

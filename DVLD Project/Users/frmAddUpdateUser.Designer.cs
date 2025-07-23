@@ -395,6 +395,7 @@
             this.Controls.Add(this.tabAddUpdateUser);
             this.Controls.Add(this.lbTypeOfEdit);
             this.Name = "frmAddUpdateUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddUpdateUser";
             this.Load += new System.EventHandler(this.frmAddUpdateUser_Load);
             this.tabAddUpdateUser.ResumeLayout(false);
